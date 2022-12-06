@@ -1,5 +1,7 @@
 import React from 'react'
-import { Picker, View } from 'react-native'
+import { View } from 'react-native'
+import { Picker } from '@react-native-picker/picker'
+
 
 import AbstractSelectInput from '../AbstractSelectInput'
 

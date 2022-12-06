@@ -43,6 +43,9 @@
       "<rootDir>/src"
     ]
   },
+  "dependencies": {
+    "@react-native-picker/picker": "^1.9.11"
+  },
   "devDependencies": {
     "babel-eslint": "*",
     "babel-preset-react-native": "*",
