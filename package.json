@@ -44,7 +44,7 @@
     ]
   },
   "dependencies": {
-    "@react-native-picker/picker": "^1.9.11"
+    "@react-native-picker/picker": "^2.4.8"
   },
   "devDependencies": {
     "babel-eslint": "*",
