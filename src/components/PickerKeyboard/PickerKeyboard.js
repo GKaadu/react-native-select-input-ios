@@ -8,6 +8,7 @@ import propTypes from './types.js'
 import styles from './styles.js'
 
 class PickerKeyboard extends Component {
+  dimensionChange
   constructor(props) {
     super(props)
 
@@ -20,11 +21,16 @@ class PickerKeyboard extends Component {
   }
 
   componentDidMount() {
-    Dimensions.addEventListener('change', this.updateDimensions)
+    this.dimensionChange = Dimensions.addEventListener(
+      'change',
+      this.updateDimensions
+    )
   }
 
   componentWillUnmount() {
-    Dimensions.removeEventListener('change', this.updateDimensions)
+    if (this.dimensionChange) {
+      this.dimensionChange.remove()
+    }
   }
 
   updateDimensions = () => {
@@ -33,7 +39,7 @@ class PickerKeyboard extends Component {
     })
   }
 
-  setPickerRef = component => {
+  setPickerRef = (component) => {
     this.picker = component
   }
 
@@ -67,7 +73,7 @@ class PickerKeyboard extends Component {
     onSubmit && onSubmit(value)
   }
 
-  onValueChange = value => {
+  onValueChange = (value) => {
     const { onValueChange } = this.props
     onValueChange && onValueChange(value)
 
@@ -76,7 +82,7 @@ class PickerKeyboard extends Component {
     })
   }
 
-  setVisible = visible => {
+  setVisible = (visible) => {
     this.setState({
       visible: visible
     })
@@ -111,7 +117,7 @@ class PickerKeyboard extends Component {
           style={[styles.pickerview, pickerViewStyle, { width }]}
           itemStyle={pickerItemStyle}
         >
-          {options.map(option => (
+          {options.map((option) => (
             <Picker.Item
               key={option.value}
               value={option.value}
